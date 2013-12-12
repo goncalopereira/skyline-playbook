@@ -1,0 +1,1 @@
+redis_server: { name: redis-server, version: '2:2.6.13-1' }

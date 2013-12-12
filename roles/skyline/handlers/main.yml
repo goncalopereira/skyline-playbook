@@ -1,0 +1,3 @@
+- name: restart skyline
+  action: service name={{ item }} state=restarted
+  with_items: skyline.services

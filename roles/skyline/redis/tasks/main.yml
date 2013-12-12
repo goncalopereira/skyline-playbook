@@ -1,0 +1,7 @@
+- name: Install redis
+  action: apt pkg={{ redis_server.name }}={{ redis_server.version }} state=installed
+  notify: restart redis
+
+- name: Update redis.conf
+  action: copy src=redis.conf dest=/etc/redis/redis.conf
+  notify: restart redis

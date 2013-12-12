@@ -1,0 +1,7 @@
+- hosts: monitoring
+  remote_user: root
+  roles:
+    - skyline/graphite
+    - skyline/redis
+    - skyline/oculus
+    - skyline

@@ -1,0 +1,10 @@
+webapp: { port: 1500, ip: 0.0.0.0 }
+
+horizon: { pickle_port: 2024, udp_port: 2025 }
+
+skyline: {
+  version: master,
+  path: /srv/skyline,
+  repo: 'https://github.com/etsy/skyline.git',
+  services: [ horizon.d, analyzer.d, webapp.d ]
+  }
