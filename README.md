@@ -1,4 +1,4 @@
-## New vanilla box
+## new vanilla box
 
 ```
 root@monitoring:~# lsb_release -a
@@ -9,7 +9,14 @@ Release:	13.10
 Codename:	saucy
 ```
 
-## local box
+## local ansible
+
+```
+% ansible --version                                                                                                   
+ansible 1.4
+```
+
+## local repo
 
 ```
 ± % cat staging                                                                                                                  
@@ -35,6 +42,13 @@ skyline: {
   repo: 'https://github.com/etsy/skyline.git',
   services: [ horizon.d, analyzer.d, webapp.d ]
   }
+  
+```
+
+## run
+
+```
+
   
 ```
 
