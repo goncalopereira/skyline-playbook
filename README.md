@@ -1,4 +1,4 @@
-New vanilla box
+## New vanilla box
 
 root@monitoring:~# lsb_release -a
 No LSB modules are available.
@@ -7,7 +7,7 @@ Description:	Ubuntu 13.10
 Release:	13.10
 Codename:	saucy
 
-local box
+## local box
 
 ± % cat staging                                                                                                                                         !12031
 [monitoring]
