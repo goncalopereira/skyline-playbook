@@ -33,8 +33,8 @@
   notify: 
   - restart skyline
 
-- name: Update skyline init.d templates
-  action: file src={{ skyline.path }}/bin/{{ item }} dest=/etc/init.d/{{ item }} mode=555
+- name: Symlink skyline init.d templates
+  action: template src={{ item }}.j2 dest=/etc/init.d/{{ item }} mode=555 
   with_items: skyline.services
   notify: 
   - restart skyline
