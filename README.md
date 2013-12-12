@@ -48,7 +48,70 @@ skyline: {
 ## run
 
 ```
+± % ansible-playbook -i staging playbook.yml                                                                            
 
+PLAY [monitoring] ************************************************************* 
+
+GATHERING FACTS *************************************************************** 
+previous known host file not found
+The authenticity of host 'monitoring.goncalopereira.com (XXX)' can't be established.
+ECDSA key fingerprint is XXX.
+Are you sure you want to continue connecting (yes/no)? yes
+ok: [monitoring.goncalopereira.com]
+
+TASK: [skyline/redis | Install redis] ***************************************** 
+changed: [monitoring.goncalopereira.com]
+
+TASK: [skyline/redis | Update redis.conf] ************************************* 
+changed: [monitoring.goncalopereira.com]
+
+TASK: [skyline | Install tools] *********************************************** 
+changed: [monitoring.goncalopereira.com] => (item={'name': 'python-dev'})
+changed: [monitoring.goncalopereira.com] => (item={'name': 'python-pip'})
+changed: [monitoring.goncalopereira.com] => (item={'name': 'git'})
+
+TASK: [skyline | Checkout Skyline] ******************************************** 
+changed: [monitoring.goncalopereira.com]
+
+TASK: [skyline | Create Skyline log directories] ****************************** 
+changed: [monitoring.goncalopereira.com] => (item=/var/log/skyline)
+changed: [monitoring.goncalopereira.com] => (item=/var/run/skyline)
+
+TASK: [skyline | Install /srv/skyline/requirements.txt with pip] ************** 
+changed: [monitoring.goncalopereira.com]
+
+TASK: [skyline | Install remaining dependencies with pip] ********************* 
+changed: [monitoring.goncalopereira.com] => (item={'version': '0.2.1', 'name': 'patsy'})
+changed: [monitoring.goncalopereira.com] => (item={'version': '0.4.0', 'name': 'msgpack_python'})
+
+TASK: [skyline | Install python dependencies] ********************************* 
+changed: [monitoring.goncalopereira.com] => (item={'name': 'python-numpy'})
+changed: [monitoring.goncalopereira.com] => (item={'name': 'python-scipy'})
+changed: [monitoring.goncalopereira.com] => (item={'name': 'python-scikits.statsmodels'})
+
+TASK: [skyline | Update Skyline settings.py template] ************************* 
+changed: [monitoring.goncalopereira.com]
+
+TASK: [skyline | skyline init.d templates] ************************************ 
+changed: [monitoring.goncalopereira.com] => (item=horizon.d)
+changed: [monitoring.goncalopereira.com] => (item=analyzer.d)
+changed: [monitoring.goncalopereira.com] => (item=webapp.d)
+
+TASK: [skyline | start skyline] *********************************************** 
+changed: [monitoring.goncalopereira.com] => (item=horizon.d)
+changed: [monitoring.goncalopereira.com] => (item=analyzer.d)
+changed: [monitoring.goncalopereira.com] => (item=webapp.d)
+
+NOTIFIED: [skyline/redis | restart redis] ************************************* 
+changed: [monitoring.goncalopereira.com]
+
+NOTIFIED: [skyline | restart skyline] ***************************************** 
+changed: [monitoring.goncalopereira.com] => (item=horizon.d)
+changed: [monitoring.goncalopereira.com] => (item=analyzer.d)
+changed: [monitoring.goncalopereira.com] => (item=webapp.d)
+
+PLAY RECAP ******************************************************************** 
+monitoring.goncalopereira.com : ok=14   changed=13   unreachable=0    failed=0   
   
 ```
 
